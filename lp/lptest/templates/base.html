@@ -1,0 +1,42 @@
+<!-- yourapp/templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Login Page{% endblock %}</title>
+    <!-- Add your stylesheets, scripts, or other meta tags here -->
+</head>
+<body>
+
+    <header>
+        <h1>fareed portal</h1>
+        <!-- You can add a navigation menu or other header elements here -->
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+        <!-- The main content of each page will be inserted here -->
+    </main>
+
+    <footer>
+        <!-- You can add footer elements here -->
+        <p>&copy; 2023 Login Page Project</p>
+    </footer>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+        <!-- templates/base.html -->
+        <ul>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <!-- other menu items... -->
+        </ul>
+
+
+</body>
+</html>
