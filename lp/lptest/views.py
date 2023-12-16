@@ -6,7 +6,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm  # Import your custom form
 
@@ -37,5 +37,6 @@ def user_login(request):
             messages.error(request, 'Invalid username or password. Please try again.')
 
     return render(request, 'login.html')
+@login_required
 def welcome(request):
     return render(request, 'welcome.html')
