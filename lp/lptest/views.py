@@ -1,9 +1,23 @@
+<<<<<<< HEAD
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .forms import CustomUserCreationForm
+=======
+from django.shortcuts import render
+
+# Create your views here.
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm
+from django.contrib import messages
+
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm  # Import your custom form
+>>>>>>> parent of 0e175b2 (stylesheet is joined)
 
 @csrf_exempt
 def api_register(request):
@@ -48,6 +62,7 @@ def api_login(request):
     print('Sending response from api_login:', response_data)
     return JsonResponse(response_data)
 
+<<<<<<< HEAD
 @login_required
 @csrf_exempt
 def api_welcome(request):
@@ -60,3 +75,8 @@ def api_welcome(request):
     else:
         response_data = {'status': 'error', 'message': 'Invalid request method.'}
         return JsonResponse(response_data)
+=======
+    return render(request, 'login.html')
+def welcome(request):
+    return render(request, 'welcome.html')
+>>>>>>> parent of 0e175b2 (stylesheet is joined)
